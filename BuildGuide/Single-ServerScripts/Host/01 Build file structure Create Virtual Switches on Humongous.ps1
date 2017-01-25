@@ -4,7 +4,7 @@
 # PS Version: 5.1
 # Author: Ron Davis
 # 
-# Last Modified: 1/13/2017
+# Last Modified: 1/25/2017
 # 
 # Description: This script enables Enhanced Session Mode, creates virtual switches,
 # and builds the file structure.
@@ -38,7 +38,6 @@ If (!($ExistExternalSwitch)) {
 New-VMSwitch -Name "VMExternalNetwork" -NetAdapterName $NAdapterName.Name
 }
 }#End
-
 Create-vmSwitches
 
 #TASK: BUILD THE FILE STRUCTURE
@@ -50,8 +49,8 @@ New-Item C:\RonsNotes\ISOs\Server2016\ -ItemType directory -ErrorAction Silently
 If(!( Test-Path c:\RonsNotes\ISOs\SQL2016\)){
 New-Item C:\RonsNotes\ISOs\SQL2016\ -ItemType directory -ErrorAction SilentlyContinue}
 
-If(!( Test-Path c:\RonsNotes\ISOs\Sharepoint2016\)){
-New-Item C:\RonsNotes\ISOs\Sharepoint2016\ -ItemType directory -ErrorAction SilentlyContinue}
+<#If(!( Test-Path c:\RonsNotes\ISOs\Sharepoint2016\)){
+New-Item C:\RonsNotes\ISOs\Sharepoint2016\ -ItemType directory -ErrorAction SilentlyContinue}#>
 
 If(!( Test-Path c:\RonsNotes\Labs\)){
 New-Item C:\RonsNotes\Labs\ -ItemType directory -ErrorAction SilentlyContinue}
@@ -64,4 +63,4 @@ ii C:\RonsNotes
 } #End
 Build-FileStructure
 
-Write-Host " Copy the ISOs and Office.IMG files and the scripts to the correct location as explained in the documentation" -ForegroundColor Yellow
+Write-Host " Copy the ISOs and the scripts to the correct locations as explained in the documentation" -ForegroundColor Yellow
