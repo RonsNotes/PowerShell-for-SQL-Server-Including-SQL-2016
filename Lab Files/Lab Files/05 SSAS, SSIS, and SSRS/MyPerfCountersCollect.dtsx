@@ -1,0 +1,898 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/23/2007 1:05:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName=""
+  DTS:CreatorName=""
+  DTS:DelayValidation="True"
+  DTS:DTSID="{C2EAABC1-5BF3-4127-BEB3-26E94D026E7D}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:FailParentOnFailure="True"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:MaxConcurrentExecutables="2"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="PerfCountersCollect"
+  DTS:PackageType="5"
+  DTS:VersionBuild="250"
+  DTS:VersionGUID="{4B36A386-0B14-481E-9CF8-C5906F1109CB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ConfigConnection]"
+      DTS:CreationName="OLEDB"
+      DTS:Description="Connection used to get information about collection configuration and for logging purposes."
+      DTS:DTSID="{4E94A5E2-F3FC-4BE3-A517-51510D6C61A0}"
+      DTS:ObjectName="ConfigConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::ConfigConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=msdb;Provider=SQLNCLI11;Integrated Security=SSPI;APP=SQL Server Data Collector;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="User::CacheDirectory"
+      DTS:ConfigurationVariable="\Package.Variables[User::CacheDirectory].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{2DF91A21-DC08-404B-B537-367F20F72E42}"
+      DTS:ObjectName="CacheDirectory" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::CacheWindow"
+      DTS:ConfigurationVariable="\Package.Variables[User::CacheWindow].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{B360CA6A-D82F-4B4E-81DB-7A8F702574F6}"
+      DTS:ObjectName="CacheWindow" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::InputParameters"
+      DTS:ConfigurationVariable="\Package.Variables[User::InputParameters].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{FB8C290D-145C-46CE-BB73-10BB2385175F}"
+      DTS:ObjectName="InputParameters" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::MDWConnectionString"
+      DTS:ConfigurationVariable="\Package.Variables[User::MDWConnectionString].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{5490BC46-3D1A-4F9A-8776-CF1BE3D41469}"
+      DTS:ObjectName="MDWConnectionString" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::ConfigConnectionString"
+      DTS:ConfigurationVariable="\Package.Variables[User::ConfigConnectionString].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{DDD6841A-31D4-4A59-8532-F9790E901171}"
+      DTS:ObjectName="ConfigConnectionString" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::TargetConnectionString"
+      DTS:ConfigurationVariable="\Package.Variables[User::TargetConnectionString].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{EBE7AA26-55D4-4F72-B489-B55945E6019B}"
+      DTS:ObjectName="TargetConnectionString" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::LoopEventName"
+      DTS:ConfigurationVariable="\Package.Variables[User::LoopEventName].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{F9014B9C-BC8F-489C-B99F-097E18F9BC23}"
+      DTS:ObjectName="LoopEventName" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::ExitEventName"
+      DTS:ConfigurationVariable="\Package.Variables[User::ExitEventName].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{C24EF892-429F-4B3C-A111-13DB7A494FCB}"
+      DTS:ObjectName="ExitEventName" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::CollectorTypeUID"
+      DTS:ConfigurationVariable="\Package.Variables[User::CollectorTypeUID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{27D818B0-33C7-43D0-8EF2-5977B4196718}"
+      DTS:ObjectName="CollectorTypeUID" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::CollectionSetUID"
+      DTS:ConfigurationVariable="\Package.Variables[User::CollectionSetUID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{E47A5D19-3066-4CB4-BBE5-FA97F105AFC3}"
+      DTS:ObjectName="CollectionSetUID" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::ItemID"
+      DTS:ConfigurationVariable="\Package.Variables[User::ItemID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D172908-BD61-4ABF-9F82-27F51E6C1DA0}"
+      DTS:ObjectName="ItemID" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::InstanceID"
+      DTS:ConfigurationVariable="\Package.Variables[User::InstanceID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{E5363D05-5772-4597-88B3-326AF26B3C85}"
+      DTS:ObjectName="InstanceID" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::InstanceName"
+      DTS:ConfigurationVariable="\Package.Variables[User::InstanceName].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{361B3E87-706B-4AD0-9EC1-006A44B38233}"
+      DTS:ObjectName="InstanceName" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::LoggingLevel"
+      DTS:ConfigurationVariable="\Package.Variables[User::LoggingLevel].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{3669A456-6321-4100-AC8E-FB1A95859A8E}"
+      DTS:ObjectName="LoggingLevel" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::LogID"
+      DTS:ConfigurationVariable="\Package.Variables[User::LogID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{FDCAFA60-9772-42E4-BBEF-7385D5D59B6F}"
+      DTS:ObjectName="LogID" />
+    <DTS:Configuration
+      DTS:ConfigurationString="User::ParentLogID"
+      DTS:ConfigurationVariable="\Package.Variables[User::ParentLogID].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{27797092-0D53-4ED5-88B7-0C7B76E726BD}"
+      DTS:ObjectName="ParentLogID" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{29F8E7BD-603A-476F-9B2D-6C92119CE553}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CacheDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8">c:\perflogs</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{967E7E54-C796-4A22-995E-AAF61BB36173}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::CacheDirectory] + &quot;\\&quot; + @[System::MachineName] + &quot;_&quot; + @[User::InstanceID] + &quot;_&quot;  + @[User::CollectionSetUID] + &quot;_&quot; +  (DT_WSTR, 255) @[User::ItemID] + &quot;.cache&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CacheFilename">
+      <DTS:VariableValue
+        DTS:DataType="8">c:\perflogs\STUDENTSERVER01_MSSQL.1_640012b7-4ed0-4865-a636-4946d73c425f_0.cache</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF1ADEC8-05A4-4885-AE2E-F5F40EDF145A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CacheWindow">
+      <DTS:VariableValue
+        DTS:DataType="3">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5042E47-57C6-42FF-B65A-36AA2F808656}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CollectionSetUID">
+      <DTS:VariableValue
+        DTS:DataType="8">640012b7-4ed0-4865-a636-4946d73c425f</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2E115FC3-AB18-4468-BF2D-74C84CFFF849}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CollectorTypeUID">
+      <DTS:VariableValue
+        DTS:DataType="8">294605dd-21de-40b2-b20f-f3e170ea1ec3</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{64459284-6B94-45DB-A58B-50D48D02C473}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConfigConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Provider=SQLNCLI11;Data Source=(local);Integrated Security=SSPI;Initial Catalog=msdb;APP=SQL Server Data Collector</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E988E92E-8FC0-4097-8AA4-CD14BD52783F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExitEventName">
+      <DTS:VariableValue
+        DTS:DataType="8">EXITEVENT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3EB44CAF-64FC-4F6A-A7BE-4160AEE20B34}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="InputParameters">
+      <DTS:VariableValue
+        DTS:DataType="8">&lt;PerformanceCountersCollector&gt;&lt;PerformanceCounters Objects="Process" Counters="*" Instances="*" /&gt;&lt;PerformanceCounters Objects="Processor" Counters="*" Instances="*" /&gt;&lt;PerformanceCounters Objects="Paging File" Counters="*" Instances="*" /&gt;&lt;PerformanceCounters Objects="PhysicalDisk" Counters="*" Instances="*" /&gt;&lt;PerformanceCounters Objects="Server" Counters="*" Instances="" /&gt;&lt;/PerformanceCountersCollector&gt;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{928007D1-B14A-4D77-8204-80390F5FB6CB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="InstanceID">
+      <DTS:VariableValue
+        DTS:DataType="8">MSSQL.1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{43C71C34-F794-427C-92E6-D395182A0EA9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="InstanceName">
+      <DTS:VariableValue
+        DTS:DataType="8">(local)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4BE8D57B-5002-4B3E-B43A-50F76AF58148}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ItemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AA31DAA1-078D-4091-8B9F-1E74D4A51FA1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoggingLevel">
+      <DTS:VariableValue
+        DTS:DataType="3">2</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D05C5D8C-82BF-4C78-AB42-47C01FF782BF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogID">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C7C5068-DBAC-42CB-A94E-FA5EB1FAEE4A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopDuration">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9AA16C7F-334A-4F2C-9F11-CC3719DB3722}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopEventName">
+      <DTS:VariableValue
+        DTS:DataType="8">LOOPEVENT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2E6EF4C5-555E-4955-B8BD-22F04E37EB47}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MDWConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Provider=SQLNCLI11;Data Source=(local);Integrated Security=SSPI;Initial Catalog=MDW;APP=SQL Server Data Collector</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B87950A5-F6B0-4944-957B-943E41BD4A9C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentLogID">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{610F0141-9C2A-427B-8774-BCA4C0B51F30}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountIn">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5795944D-0E69-4702-9997-D9BA10D59589}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountOut">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{44A62538-C3D0-4BFD-9216-9CF8B520D3FF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Provider=SQLNCLI11;Data Source=(local);Integrated Security=SSPI;APP=SQL Server Data Collector</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5CE21C4-35D9-4861-B04C-7FFD03436B28}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetProcessID">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">2,7,OnError,9,OnWarning</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:DelayValidation="True"
+      DTS:Description="Foreach Loop - Aquire performance counters snapshot (Collector Item Frequency)"
+      DTS:DTSID="{72e40adc-49ee-4175-b503-4f26f85912fc}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:FailParentOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="0"
+      DTS:ObjectName="LOOP - Aquire performance counters @ collection item frequency">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachEventEnumerator"
+        DTS:DTSID="{6a2ecbd1-4348-4274-a8be-ea7c86bd0581}"
+        DTS:ObjectName="{710AEAF2-45BD-4AB2-9EAF-FB6268AD10A2}">
+        <DTS:PropertyExpression
+          DTS:Name="ExitEventName">@[User::ExitEventName]</DTS:PropertyExpression>
+        <DTS:PropertyExpression
+          DTS:Name="LoopEventName">@[User::LoopEventName]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachEventEnumeratorProperties>
+            <FEEEProperty
+              LoopEventName="LOOPEVENT" />
+            <FEEEProperty
+              ExitEventName="EXITEVENT" />
+          </ForEachEventEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:DelayValidation="True"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{926A1F57-89A9-423A-8A68-151BE44CE956}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:FailParentOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
+          DTS:ObjectName="Collect Upload Package Sync Sequence Container">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2C3410CF-ED28-49FC-B178-5A5D81706A6D}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="SyncRoot">
+              <DTS:VariableValue
+                DTS:DataType="8">PerfCountersLock</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:DelayValidation="True"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{C54F50A1-B2B5-4E92-9B84-4FAEDBF89FFF}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:FailParentOnFailure="True"
+              DTS:LocaleID="-1"
+              DTS:MaxErrorCount="0"
+              DTS:ObjectName="DFT - Retrieve Performance Counters"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server 2014; Â© 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <pipeline
+                  BLOBTempStoragePath=""
+                  bufferTempStoragePath=""
+                  defaultBufferMaxRows="500"
+                  defaultBufferSize="1048576"
+                  engineThreads="2"
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source"
+                      componentClassID="Microsoft.TxPerfCounters"
+                      name="Perfomance Counters Source"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Provides XML input for the Performance Counter source component"
+                          expressionType="Notify"
+                          name="InputParameters"></property>
+                      </properties>
+                      <outputs>
+                        <output
+                          refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output]"
+                          name="TxPerfCounters Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[path]"
+                              dataType="wstr"
+                              length="2048"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[path]"
+                              name="path" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[formatted_value]"
+                              dataType="r8"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[formatted_value]"
+                              name="formatted_value" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_first]"
+                              dataType="i8"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_first]"
+                              name="raw_value_first" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_second]"
+                              dataType="i8"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_second]"
+                              name="raw_value_second" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_type]"
+                              dataType="i4"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_type]"
+                              name="counter_type" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[collection_time]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[collection_time]"
+                              name="collection_time" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[object_name]"
+                              dataType="wstr"
+                              length="2048"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[object_name]"
+                              name="object_name" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_name]"
+                              dataType="wstr"
+                              length="2048"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_name]"
+                              name="counter_name" />
+                            <outputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[instance_name]"
+                              dataType="wstr"
+                              length="2048"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[instance_name]"
+                              name="instance_name" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected"
+                      componentClassID="Microsoft.RowCount"
+                      contactInfo="Row Count;Microsoft Corporation;Microsoft SqlServer 2015; (C) 2014 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Counts the rows in a dataset."
+                      name="RC - Number of counters collected"
+                      validateExternalMetadata="False">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable to hold the row count."
+                          name="VariableName">User::RowCountOut</property>
+                      </properties>
+                      <inputs>
+                        <input
+                          refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected.Inputs[Row Count Input 1]"
+                          hasSideEffects="true"
+                          name="Row Count Input 1">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected.Outputs[Row Count Output 1]"
+                          name="Row Count Output 1"
+                          synchronousInputId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected.Inputs[Row Count Input 1]">
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache"
+                      componentClassID="Microsoft.RawDestination"
+                      contactInfo="Loads raw data into a file.;Microsoft Corporation;Microsoft SqlServer 2015; (C) 2014 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                      description="Loads raw data into a file."
+                      name="RFD - Write to cache"
+                      validateExternalMetadata="False"
+                      version="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the file."
+                          name="AccessMode"
+                          typeConverter="AccessMode">1</property>
+                        <property
+                          dataType="System.Null"
+                          description="Output file name"
+                          name="FileName"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.NonValidatingFileNameEditor" />
+                        <property
+                          dataType="System.String"
+                          description="Name of the variable that contains the file name"
+                          name="FileNameVariable">User::CacheFilename</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates what option is used to write to the file."
+                          name="WriteOption"
+                          typeConverter="WriteOption">2</property>
+                      </properties>
+                      <inputs>
+                        <input
+                          refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input]"
+                          hasSideEffects="true"
+                          name="Raw File Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[path]"
+                              cachedDataType="wstr"
+                              cachedLength="2048"
+                              cachedName="path"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[path]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[path]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[formatted_value]"
+                              cachedDataType="r8"
+                              cachedName="formatted_value"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[formatted_value]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[formatted_value]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[raw_value_first]"
+                              cachedDataType="i8"
+                              cachedName="raw_value_first"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[raw_value_first]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_first]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[raw_value_second]"
+                              cachedDataType="i8"
+                              cachedName="raw_value_second"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[raw_value_second]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[raw_value_second]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[counter_type]"
+                              cachedDataType="i4"
+                              cachedName="counter_type"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[counter_type]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_type]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[collection_time]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="collection_time"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[collection_time]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[collection_time]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[object_name]"
+                              cachedDataType="wstr"
+                              cachedLength="2048"
+                              cachedName="object_name"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[object_name]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[object_name]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[counter_name]"
+                              cachedDataType="wstr"
+                              cachedLength="2048"
+                              cachedName="counter_name"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[counter_name]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[counter_name]" />
+                            <inputColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].Columns[instance_name]"
+                              cachedDataType="wstr"
+                              cachedLength="2048"
+                              cachedName="instance_name"
+                              externalMetadataColumnId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[instance_name]"
+                              lineageId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output].Columns[instance_name]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[collection_time]"
+                              dataType="dbTimeStamp"
+                              name="collection_time" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[path]"
+                              dataType="wstr"
+                              length="2048"
+                              name="path" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[formatted_value]"
+                              dataType="r8"
+                              name="formatted_value" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[raw_value_first]"
+                              dataType="i8"
+                              name="raw_value_first" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[raw_value_second]"
+                              dataType="i8"
+                              name="raw_value_second" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[counter_type]"
+                              dataType="i4"
+                              name="counter_type" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[object_name]"
+                              dataType="wstr"
+                              length="2048"
+                              name="object_name" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[instance_name]"
+                              dataType="wstr"
+                              length="2048"
+                              name="instance_name" />
+                            <externalMetadataColumn
+                              refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input].ExternalColumns[counter_name]"
+                              dataType="wstr"
+                              length="2048"
+                              name="counter_name" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters.Paths[Row Count Output 1]"
+                      endId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RFD - Write to cache.Inputs[Raw File Destination Input]"
+                      name="Row Count Output 1"
+                      startId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected.Outputs[Row Count Output 1]" />
+                    <path
+                      refId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters.Paths[TxPerfCounters Output]"
+                      endId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\RC - Number of counters collected.Inputs[Row Count Input 1]"
+                      name="TxPerfCounters Output"
+                      startId="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container\DFT - Retrieve Performance Counters\Perfomance Counters Source.Outputs[TxPerfCounters Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\Get SQL Process ID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8399b51b-c73c-4eb5-a314-447211237d45}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get SQL Process ID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2014; Â© 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8f6a0f37-d2f3-4cba-8dba-24bc965aa726}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="SqlProcessID">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4E94A5E2-F3FC-4BE3-A517-51510D6C61A0}"
+              SQLTask:SqlStatementSource="SELECT ? = CONVERT (int, SERVERPROPERTY ('ProcessID'))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TargetProcessID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\No-Op Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{3C4A6AEF-9248-43F4-9428-9A90D2180467}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="No-Op Sequence Container">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\SQL - Log Package Iteration"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{81cbca02-95ea-4634-95ed-6ddd61802257}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:ISOLevel="4096"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
+          DTS:ObjectName="SQL - Log Package Iteration"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2014; Â© 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4E94A5E2-F3FC-4BE3-A517-51510D6C61A0}"
+              SQLTask:SqlStatementSource="EXEC dbo.sp_syscollector_event_onpackageupdate ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LogID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency\SQL - Log Package Stats"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{584e45b8-9755-4fa7-b8b7-f5c1d000603d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:ISOLevel="4096"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
+          DTS:ObjectName="SQL - Log Package Stats"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2014; Â© 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4E94A5E2-F3FC-4BE3-A517-51510D6C61A0}"
+              SQLTask:SqlStatementSource="{call dbo.sp_syscollector_event_onstatsupdate(?, N'PerfCountersCollect - Main Collect Loop', ?, ?, 0, ?)}" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LogID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RowCountOut"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::RowCountOut"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::LoopDuration"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:Description="Target Process ID Unknown"
+          DTS:DTSID="{A8FA1F46-2B02-4F55-A49E-4DD5C75C5F91}"
+          DTS:EvalOp="1"
+          DTS:Expression="@TargetProcessID == -1"
+          DTS:From="Package\LOOP - Aquire performance counters @ collection item frequency\No-Op Sequence Container"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\LOOP - Aquire performance counters @ collection item frequency\Get SQL Process ID" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:Description="Target Process ID Known"
+          DTS:DTSID="{7CCBF793-8783-41F4-ADC2-5E71B809CF51}"
+          DTS:EvalOp="1"
+          DTS:Expression="@TargetProcessID != -1"
+          DTS:From="Package\LOOP - Aquire performance counters @ collection item frequency\No-Op Sequence Container"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{9F2FBB1A-FACF-4FC4-B755-A53DC3403F70}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::LoggingLevel] &gt;= 1"
+          DTS:From="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\LOOP - Aquire performance counters @ collection item frequency\SQL - Log Package Stats"
+          DTS:Value="2" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{71196d3d-021d-447d-973a-4c23d217cd1c}"
+          DTS:From="Package\LOOP - Aquire performance counters @ collection item frequency\SQL - Log Package Stats"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\LOOP - Aquire performance counters @ collection item frequency\SQL - Log Package Iteration"
+          DTS:Value="2" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LOOP - Aquire performance counters @ collection item frequency.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{0610DCB9-BB0C-4B26-BE90-D0DEFF3CC36A}"
+          DTS:From="Package\LOOP - Aquire performance counters @ collection item frequency\Get SQL Process ID"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\LOOP - Aquire performance counters @ collection item frequency\Collect Upload Package Sync Sequence Container"
+          DTS:Value="2" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{A54A1B17-9B8C-435D-8F32-D034B664E27C}"
+          DTS:ObjectName="{A54A1B17-9B8C-435D-8F32-D034B664E27C}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LoopDuration" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

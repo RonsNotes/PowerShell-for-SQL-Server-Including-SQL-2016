@@ -1,0 +1,7 @@
+USE AdventureWorks2014
+GO
+
+BEGIN TRAN
+SELECT *
+FROM dbo.ErrorLog
+WITH (TABLOCKX)
