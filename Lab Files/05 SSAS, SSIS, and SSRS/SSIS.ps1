@@ -17,7 +17,7 @@ Specify a few variables: the server we intend to work with and the intended
 new folder name.
 #>
 $server = "localhost"
-$newFolder = "BlueBuffaloPress"
+$newFolder = "RonsNotes"
     
 <#Create a folder in package store#>
 if (!$app.FolderExistsOnDtsServer("\File System\$($newFolder)", $server))
@@ -51,7 +51,7 @@ $server = "localhost"
 $dtsx = "C:\Lab Files\05 SSAS, SSIS, and SSRS\MyPerfCountersCollect.dtsx"
 $package = $app.LoadPackage($dtsx, $null)
 #Intended deployment location
-$SSISPackageStorePath = "\File System\BlueBuffaloPress"
+$SSISPackageStorePath = "\File System\RonsNotes"
 $destinationName = "$($SSISPackageStorePath)\$($package.Name)"
 
 <#Finally, we utilize the app we created to save the specified package
