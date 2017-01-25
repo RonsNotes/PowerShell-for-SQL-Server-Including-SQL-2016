@@ -3,7 +3,7 @@
 
 <#Retrieving the items in your SSRS Report Server#>
 <#First we specify a few variables#>
-$reportServerUri  = "http://studentserver01/ReportServer/ReportService2010.asmx"
+$reportServerUri  = "http://Humongous/ReportServer/ReportService2010.asmx"
 $proxy = New-WebServiceProxy -Uri $reportServerUri -UseDefaultCredential
 
 #Request all items listed on the report server.
@@ -31,7 +31,7 @@ $dataSourceDefinitionType = ($type + '.DataSourceDefinition')
 $dataSourceDefinition = New-Object($dataSourceDefinitionType)
 
 $dataSourceDefinition.CredentialRetrieval = "Integrated"
-$dataSourceDefinition.ConnectString = "Data Source=StudentServer01;Initial Catalog=AdventureWorks2014"
+$dataSourceDefinition.ConnectString = "Data Source=Humongous;Initial Catalog=AdventureWorks2014"
 $dataSourceDefinition.extension = "SQL"
 $dataSourceDefinition.enabled = $true
 $dataSourceDefinition.Prompt = $null
