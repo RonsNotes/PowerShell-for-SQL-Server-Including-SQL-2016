@@ -4,7 +4,7 @@
 # PS Version: 5.1
 # Author: Ron Davis
 # 
-# Last Modified: 1/13/2017
+# Last Modified: 1/25/2017
 # 
 # Description: This script enables Enhanced Session Mode, creates virtual switches,
 # and builds the file structure.
@@ -62,7 +62,8 @@ foreach ($s in $CSS){
 Copy-VMFile $VMName -FileSource Host -SourcePath "C:\RonsNotes\Script_Folders\Humongous Scripts\$s" -DestinationPath c:\ -CreateFullPath -Force
 }
 
-Copy-VMFile  Humongous -FileSource Host -SourcePath C:\RonsNotes\ISOs\Sharepoint2016\officeserver.img -DestinationPath c:\ -CreateFullPath -Force
+<#Copy-VMFile  Humongous -FileSource Host -SourcePath C:\RonsNotes\ISOs\Sharepoint2016\officeserver.img -DestinationPath c:\ -CreateFullPath -Force
 
-} #End
+}#>
+ #End
 CopyFiles-Humongous

@@ -4,7 +4,7 @@
 # PS Version: 5.1
 # Author: Ron Davis
 # 
-# Last Modified: 1/13/2017
+# Last Modified: 1/25/2017
 # 
 # Description: This script will verify the correct files are in the proper location and create the humongous server virtual machine.
 #              
@@ -26,7 +26,7 @@ Function Test-CorrectFiles {
 
 $ISOSvr2016 = Get-ChildItem C:\RonsNotes\ISOs\Server2016\ | %{$_.Name} -ErrorAction inquire # ASK
 $ISOSql = Get-ChildItem C:\RonsNotes\ISOs\SQL2016\ | %{$_.Name} -ErrorAction inquire # ASK
-$IMGSharePoint2016 = Get-ChildItem C:\RonsNotes\ISOs\Sharepoint2016\ | %{$_.Name} -ErrorAction inquire # ASK
+#$IMGSharePoint2016 = Get-ChildItem C:\RonsNotes\ISOs\Sharepoint2016\ | %{$_.Name} -ErrorAction inquire # ASK
 
 If ($ISOSvr2016 -eq "14393.0.160715-1616.RS1_RELEASE_SERVER_EVAL_X64FRE_EN-US.ISO")
 {Write-Host "Expected version of ISO for Server 2016 in expected location" -ForegroundColor Green}
@@ -36,9 +36,9 @@ If ($ISOSQL -eq "SQLServer2016-x64-ENU.iso")
 {Write-Host "Expected version of IMG for SQLServer 2016 in expected location" -ForegroundColor Green}
 Else {Write-Host "Wrong or missing SQL 2016 ISO. SQLServer2016-x64-ENU.iso expected. Correct to continue " -ForegroundColor Red ;  Read-Host -Prompt "Any key to continue"}
 
-If ($IMGSharePoint2016 -eq "officeserver.img")
+<#If ($IMGSharePoint2016 -eq "officeserver.img")
 {Write-Host "Expected version of IMG for SharePoint Svr 2016 in expected location" -ForegroundColor Green}
-Else {Write-Host "Wrong or missing SharePoint.IMG. officeserver.img expected. Correct to continue " -ForegroundColor Red ;  Read-Host -Prompt "Any key to continue"}
+Else {Write-Host "Wrong or missing SharePoint.IMG. officeserver.img expected. Correct to continue " -ForegroundColor Red ;  Read-Host -Prompt "Any key to continue"}#>
 
 Write-host "*******"
 Write-host "*******"
