@@ -18,7 +18,7 @@ $server.DetachDatabase($databaseName, $false, $false)
 The below blocks of code will attach the AdventureWorks2014 database.
 #>
 $databasename = "AdventureWorks2014"
-$owner = "BLUEBUFFALO\Student"
+$owner = "RONSNOTES\Student"
 $mdfname = "C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\AdventureWorks2014_Data.mdf"
 
 <#This next block will create a StringCollection object to 
