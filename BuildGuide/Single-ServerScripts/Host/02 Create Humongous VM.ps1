@@ -4,9 +4,9 @@
 # PS Version: 5.1
 # Author: Ron Davis
 # 
-# Last Modified: 1/25/2017
+# Last Modified: 2/13/2017
 # 
-# Description: This script will verify the correct files are in the proper location and create the humongous server virtual machine.
+# Description: This script will create the humongous server virtual machine.
 #              
 #
 # *************************************************************************
